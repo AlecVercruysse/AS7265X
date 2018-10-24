@@ -1,4 +1,3 @@
-#define intPin 8
 #define myLed 13
 
 uint16_t LED_TimeOn = 0;

@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include "AS7265X.h"
 
-#define intPin 8
+#define intPin 3
 
 bool intFlag = false;
 uint8_t MAJOR, PATCH, BUILD, status;
@@ -35,7 +35,7 @@ void setup() {
   Serial.begin(115200);
   delay(4000);
  
-  Wire.begin(TWI_PINS_20_21); // set master mode 
+  Wire.begin(); // set master mode
   Wire.setClock(400000);      // I2C frequency at 400 kHz 
   delay(1000);
 
@@ -82,7 +82,7 @@ void setup() {
   AS7265X.disableDrvLed(2);
   delay(100);
 
-  attachInterrupt(intPin, myIntHandler, FALLING);
+  attachInterrupt(digitalPinToInterrupt(intPin), myIntHandler, FALLING);
   AS7265X.getStatus();
 }
 
